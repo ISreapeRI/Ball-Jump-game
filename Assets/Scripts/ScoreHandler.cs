@@ -5,7 +5,7 @@ using Zenject.SpaceFighter;
 
 public class ScoreHandler
 {
-    public int? playerScore { get; private set; }
+    public int playerScore { get; private set; }
 
     public ScoreHandler()
     {
@@ -15,7 +15,7 @@ public class ScoreHandler
         }
         else
         {
-            playerScore = null;
+            playerScore = 0;
         } 
     }
 }

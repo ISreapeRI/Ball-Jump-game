@@ -5,6 +5,6 @@ public class GameInstaller : MonoInstaller
 {
     public override void InstallBindings()
     {
-        Container.Bind<ScoreHandler>().FromNew().AsSingle().NonLazy();
+        Container.BindInterfacesAndSelfTo<ScoreHandler>().FromNew().AsSingle().NonLazy();
     }
 }
