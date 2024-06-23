@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 
 public class GameStart : MonoBehaviour
 {
-    private string URL = "http://127.0.0.1:5000";
+    private string URL = "http://127.0.0.1:5000/api/test";
     [SerializeField] private TextMeshProUGUI _scoreText;
 
     [Inject]
@@ -14,13 +14,15 @@ public class GameStart : MonoBehaviour
     {
         int score = scoreHandler.playerScore;
         
-        if (score != 0) _scoreText.text = "Your best score is " + scoreHandler.playerScore;
+        if (score != 0) _scoreText.text = "Your best score is " + score;
     }
 
     // Начинаем игру
     public void StartGame()
     {
         Debug.Log("Игра начинается!");
+
+        StartCoroutine(GetJSON());
     }
 
     IEnumerator GetJSON()
@@ -35,7 +37,7 @@ public class GameStart : MonoBehaviour
                 string json = request.downloadHandler.text;
                 SimpleJSON.JSONNode stat = SimpleJSON.JSON.Parse(json);
                 
-                Debug.Log(stat["1"]);
+                Debug.Log(stat);
             }
         }
     }
